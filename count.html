@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👻 Spooky Coding Challenge Countdown 👻</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #ff6600;
+            text-align: center;
+        }
+
+        .countdown {
+            font-size: 4em;
+            font-weight: bold;
+            animation: ghostAnimation 1.5s infinite;
+        }
+
+        @keyframes ghostAnimation {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Set the event date and time (Year, Month (0-11), Day, Hour, Minute, Second)
+            const eventDate = new Date(2023, 9, 5, 13, 0, 0).getTime();
+
+            const countdownElement = document.querySelector('.countdown');
+            const messageElement = document.querySelector('.message');
+
+            const updateCountdown = () => {
+                const currentTime = new Date().getTime();
+                const timeRemaining = eventDate - currentTime;
+
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+                if (timeRemaining <= 0) {
+                    countdownElement.textContent = "Event Started!";
+                    messageElement.textContent = "👻 Get ready for a spooky coding adventure! 👻";
+                    clearInterval(interval);
+                }
+            };
+
+            const interval = setInterval(updateCountdown, 1000);
+            updateCountdown(); // Call it once to display the countdown immediately
+        });
+    </script>
+</head>
+
+<body>
+
+    <h1>👻 Spooky Coding Challenge Countdown 👻</h1>
+    <div class="countdown"></div>
+    <div class="message"></div>
+
+</body>
+
+</html>
+
+
+    <h1>Spooky Coding Challenge Countdown</h1>
+    <div class="countdown"></div>
+
+</body>
+
+</html>
